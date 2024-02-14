@@ -1,0 +1,481 @@
+import 'package:flutter/material.dart';
+
+class SettingsPage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Stack(
+        children: [
+          // Background
+          Positioned(
+            left: 0,
+            top: 0,
+            child: Container(
+              width: 360,
+              height: 800,
+              color: Colors.white,
+            ),
+          ),
+          // Theme Section
+          Positioned(
+            left: 41,
+            top: 251,
+            child: Container(
+              width: 278,
+              height: 51,
+              decoration: BoxDecoration(
+                color: const Color(0xFFEDE6FC),
+                borderRadius: BorderRadius.circular(40),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.black.withOpacity(0.25),
+                    spreadRadius: 4,
+                    blurRadius: 4,
+                  ),
+                ],
+              ),
+              child: Center(
+                child: Text(
+                  'Theme Customization',
+                  style: TextStyle(
+                    fontFamily: 'Inter',
+                    fontWeight: FontWeight.bold,
+                    fontSize: 16,
+                    color: Colors.black,
+                  ),
+                ),
+              ),
+            ),
+          ),
+          // Notifications Section
+          Positioned(
+            left: 41,
+            top: 330,
+            child: Container(
+              width: 278,
+              height: 51,
+              decoration: BoxDecoration(
+                color: const Color(0xFFD7E8F8),
+                borderRadius: BorderRadius.circular(40),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.black.withOpacity(0.25),
+                    spreadRadius: 4,
+                    blurRadius: 4,
+                  ),
+                ],
+              ),
+              child: Center(
+                child: Text(
+                  'Notifications',
+                  style: TextStyle(
+                    fontFamily: 'Inter',
+                    fontWeight: FontWeight.bold,
+                    fontSize: 16,
+                    color: Colors.black,
+                  ),
+                ),
+              ),
+            ),
+          ),
+          // Language Section
+          Positioned(
+            left: 41,
+            top: 411,
+            child: GestureDetector(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => LanguagePage(),
+                    settings: RouteSettings(arguments: 'YourArgumentHere'),
+                  ),
+                );
+              },
+              child: Container(
+                width: 278,
+                height: 51,
+                decoration: BoxDecoration(
+                  color: const Color(0xFFD7F8DE),
+                  borderRadius: BorderRadius.circular(40),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black.withOpacity(0.25),
+                      spreadRadius: 4,
+                      blurRadius: 4,
+                    ),
+                  ],
+                ),
+                child: Center(
+                  child: Text(
+                    'Language',
+                    style: TextStyle(
+                      fontFamily: 'Inter',
+                      fontWeight: FontWeight.bold,
+                      fontSize: 16,
+                      color: Colors.black,
+                    ),
+                  ),
+                ),
+              ),
+            ),
+          ),
+          // Syncing Preferences Section
+          Positioned(
+            left: 41,
+            top: 571,
+            child: Container(
+              width: 278,
+              height: 51,
+              decoration: BoxDecoration(
+                color: const Color(0xFFFFEADB),
+                borderRadius: BorderRadius.circular(40),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.black.withOpacity(0.25),
+                    spreadRadius: 4,
+                    blurRadius: 4,
+                  ),
+                ],
+              ),
+              child: Center(
+                child: Text(
+                  'Syncing Preferences',
+                  style: TextStyle(
+                    fontFamily: 'Inter',
+                    fontWeight: FontWeight.bold,
+                    fontSize: 16,
+                    color: Colors.black,
+                  ),
+                ),
+              ),
+            ),
+          ),
+          // Backup And Restore Section
+          Positioned(
+            left: 41,
+            top: 651,
+            child: Container(
+              width: 278,
+              height: 51,
+              decoration: BoxDecoration(
+                color: const Color(0xFFFFCCCC),
+                borderRadius: BorderRadius.circular(40),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.black.withOpacity(0.25),
+                    spreadRadius: 4,
+                    blurRadius: 4,
+                  ),
+                ],
+              ),
+              child: Center(
+                child: Text(
+                  'Backup And Restore',
+                  style: TextStyle(
+                    fontFamily: 'Inter',
+                    fontWeight: FontWeight.bold,
+                    fontSize: 16,
+                    color: Colors.black,
+                  ),
+                ),
+              ),
+            ),
+          ),
+          // Date and Time formats Section
+          Positioned(
+            left: 41,
+            top: 491,
+            child: Container(
+              width: 278,
+              height: 51,
+              decoration: BoxDecoration(
+                color: const Color(0xFFFFFBDC),
+                borderRadius: BorderRadius.circular(40),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.black.withOpacity(0.25),
+                    spreadRadius: 4,
+                    blurRadius: 4,
+                  ),
+                ],
+              ),
+              child: Center(
+                child: Text(
+                  'Date and Time formats',
+                  style: TextStyle(
+                    fontFamily: 'Inter',
+                    fontWeight: FontWeight.bold,
+                    fontSize: 16,
+                    color: Colors.black,
+                  ),
+                ),
+              ),
+            ),
+          ),
+          // Date&Time Section
+          Positioned(
+            left: 41,
+            top: 491,
+            child: Container(
+              width: 278,
+              height: 51,
+              decoration: BoxDecoration(
+                color: const Color(0xFFFFFBDC),
+                borderRadius: BorderRadius.circular(40),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.black.withOpacity(0.25),
+                    spreadRadius: 4,
+                    blurRadius: 4,
+                  ),
+                ],
+              ),
+              child: Center(
+                child: Text(
+                  'Date&Time',
+                  style: TextStyle(
+                    fontFamily: 'Inter',
+                    fontWeight: FontWeight.bold,
+                    fontSize: 16,
+                    color: Colors.black,
+                  ),
+                ),
+              ),
+            ),
+          ),
+          // Navigation Bar
+          Positioned(
+            left: 0,
+            top: 721,
+            child: Container(
+              width: 360,
+              height: 79,
+              color: Colors.transparent,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  GestureDetector(
+                    onTap: () {
+                      // Handle home button click
+                    },
+                    child: Icon(Icons.home),
+                  ),
+                  // ... (similar code for other navigation icons)
+                ],
+              ),
+            ),
+          ),
+          // Header
+          Positioned(
+            left: 0,
+            top: 0,
+            child: Container(
+              width: 360,
+              height: 78,
+              decoration: BoxDecoration(
+                gradient: LinearGradient(
+                  colors: [
+                    Color(0xFFE2FFDD),
+                    Color(0xFFE7FFE3),
+                    Color(0xFFE0F9FF),
+                  ],
+                  stops: [0.2702, 0.2703, 0.6273],
+                  begin: Alignment.topLeft,
+                  end: Alignment.bottomRight,
+                ),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.black.withOpacity(0.25),
+                    spreadRadius: 4,
+                    blurRadius: 21.5,
+                    offset: Offset(0, -10),
+                  ),
+                ],
+              ),
+              child: Center(
+                child: Text(
+                  'setting',
+                  style: TextStyle(
+                    fontFamily: 'Inter',
+                    fontWeight: FontWeight.bold,
+                    fontSize: 16,
+                    color: Colors.black,
+                  ),
+                ),
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class LanguagePage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Stack(
+        children: [
+          // Background
+          Positioned(
+            left: 0,
+            top: 0,
+            child: Container(
+              width: 360,
+              height: 800,
+              color: Colors.white,
+            ),
+          ),
+          // Gradient Background
+          Positioned(
+            left: 0,
+            top: 0,
+            child: Container(
+              width: 360,
+              height: 800,
+              decoration: BoxDecoration(
+                gradient: LinearGradient(
+                  colors: [Color(0xFFDAFFB5), Color(0xFFE1F8FF)],
+                  begin: Alignment.topLeft,
+                  end: Alignment.bottomRight,
+                  stops: [0.0104, 0.9802],
+                ),
+              ),
+            ),
+          ),
+          // Navigation Bar
+          Positioned(
+            left: 0,
+            top: 721,
+            child: Container(
+              width: 360,
+              height: 79,
+              color: Colors.transparent,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  // Home button
+                  IconButton(
+                    onPressed: () {
+                      Navigator.pop(context); // Navigate back to the previous page
+                    },
+                    icon: Icon(Icons.home),
+                  ),
+                  IconButton(
+                    onPressed: () {
+                      // Handle emotions button click
+                    },
+                    icon: Icon(Icons.sentiment_satisfied),
+                  ),
+                  // Add similar code for other navigation icons
+                ],
+              ),
+            ),
+          ),
+          // Lang Box
+          Positioned(
+            left: 41,
+            top: 62,
+            child: Container(
+              width: 278,
+              height: 51,
+              decoration: BoxDecoration(
+                color: Color(0xFFD7F8DE),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.black.withOpacity(0.25),
+                    spreadRadius: 4,
+                    blurRadius: 4,
+                  ),
+                ],
+                borderRadius: BorderRadius.circular(40),
+              ),
+              child: Center(
+                child: Text(
+                  'Language',
+                  style: TextStyle(
+                    fontFamily: 'Inter',
+                    fontWeight: FontWeight.bold,
+                    fontSize: 16,
+                    color: Colors.black,
+                  ),
+                ),
+              ),
+            ),
+          ),
+          // Language Selection
+          Positioned(
+            left: 28,
+            top: 152,
+            child: Container(
+              width: 304,
+              height: 103,
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(20),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.black.withOpacity(0.25),
+                    spreadRadius: 4,
+                    blurRadius: 4,
+                  ),
+                ],
+              ),
+              child: Column(
+                children: [
+                  Container(
+                    width: 249,
+                    height: 34,
+                    decoration: BoxDecoration(
+                      color: Color(0xFF92C978),
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    child: Center(
+                      child: Text(
+                        'Thai',
+                        style: TextStyle(
+                          fontFamily: 'Inter',
+                          fontWeight: FontWeight.normal,
+                          fontSize: 16,
+                          color: Colors.white,
+                        ),
+                      ),
+                    ),
+                  ),
+                  SizedBox(height: 10),
+                  Container(
+                    width: 249,
+                    height: 34,
+                    decoration: BoxDecoration(
+                      color: Color(0xFFD7F8DE),
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    child: Center(
+                      child: Text(
+                        'English',
+                        style: TextStyle(
+                          fontFamily: 'Inter',
+                          fontWeight: FontWeight.normal,
+                          fontSize: 16,
+                          color: Colors.black,
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+void main() {
+  runApp(MaterialApp(
+    home: SettingsPage(),
+  ));
+}
