@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
 Future<Album> fetchAlbum() async {
-  final Uri uri = Uri.parse('https://jsonplaceholder.typicode.com/albums/1');
+  final Uri uri = Uri.parse('https://jsonplaceholder.typicode.com/albums/8');
   final response = await http.get(uri);
   if (response.statusCode == 200) {
     return Album.fromJson(jsonDecode(response.body));
