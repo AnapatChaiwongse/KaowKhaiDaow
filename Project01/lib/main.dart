@@ -4,17 +4,18 @@ import 'package:table_calendar/table_calendar.dart';
 import 'homePage.dart';
 import 'calendarPage.dart';
 import 'settingPage.dart';
+import 'loginPage.dart';
 
 void main() {
   runApp(MaterialApp(
     title: 'Calendar App',
     theme: ThemeData(primarySwatch: Colors.blue),
-    initialRoute: '/',
+    initialRoute: '/login',
     routes: {
       '/': (context) => HomePage(),
+      '/login': (context) => loginPage(),
       // '/mood': (context) => MoodPage(),
       '/calendar': (context) => CalendarPage(),
-      // '/home': (context) => HomePage(),
       // '/task': (context) => TaskPage(),
       '/setting': (context) => SettingPage(),
     },

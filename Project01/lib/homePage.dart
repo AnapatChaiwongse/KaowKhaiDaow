@@ -4,6 +4,10 @@ import 'package:application/calendarPage.dart';
 import 'package:application/navigator.dart';
 
 class HomePage extends StatefulWidget {
+  final String? email; // Declare the email argument
+
+  HomePage({Key? key, this.email}) : super(key: key);
+
   @override
   _HomePageState createState() => _HomePageState();
 }
@@ -38,10 +42,10 @@ class _HomePageState extends State<HomePage> {
             Column(
               crossAxisAlignment: CrossAxisAlignment.start, // Align the content to the left
               children: [
-                const Padding(
+                Padding(
                   padding: EdgeInsets.only(left: 20, right: 20), // Add padding to the left and right
                   child: Text(
-                    "Hello, Kaow",
+                    "Hello, ${widget.email ?? "guest"} ",
                     style: TextStyle(fontWeight: FontWeight.bold, fontSize: 30), // Make the text bold
                   ),
                 ),
