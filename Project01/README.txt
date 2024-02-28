@@ -7,6 +7,11 @@ This folder represents our updated of the project 1 including the library direct
 
 02/26/2024
 lib/
+- loginPage.dart
+Adding login page and rest API for sending the email from loginPage to homePage.
+
+02/26/2024
+lib/
 - main.dart
 - homePage.dart
 - calendarPage.dart
