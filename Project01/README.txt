@@ -3,7 +3,11 @@ This project made by
 
 for ITCS424_Wireless and Mobile Computing
 -------------------------------------------------------------------------------------
-This folder represents our updated of the project 1 including the library directory:
+This folder represents our updated of project 1 including the library directory:
+
+18/04/2024
+FINAL UPDATE for last submission
+Adding all required page for our application including API and those important feature
 
 02/26/2024
 lib/
