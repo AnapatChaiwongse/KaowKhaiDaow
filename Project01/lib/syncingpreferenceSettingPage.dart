@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'navigator.dart';
+import 'package:application/authentication.dart';
+import 'package:firebase_auth/firebase_Auth.dart';
 
 class syncingpreferencePage extends StatelessWidget {
-  int _currentIndex = 4;
+  final User? user = Authentication().currentUser;
+  final int _currentIndex = 4;
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +17,7 @@ class syncingpreferencePage extends StatelessWidget {
           gradient: LinearGradient(
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
-            colors: [Color.fromARGB(255, 239, 255, 181)!, Color.fromARGB(255, 213, 250, 255)!],
+            colors: [const Color.fromARGB(255, 239, 255, 181)!, const Color.fromARGB(255, 213, 250, 255)!],
           ),
         ),
         child: Stack(
@@ -40,20 +43,20 @@ class syncingpreferencePage extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Container(
-              padding: EdgeInsets.symmetric(horizontal: 60, vertical: 12),
+              padding: const EdgeInsets.symmetric(horizontal: 60, vertical: 12),
               decoration: BoxDecoration(
-                color: Color.fromRGBO(255, 223, 223, 1),
+                color: const Color.fromRGBO(255, 223, 223, 1),
                 borderRadius: BorderRadius.circular(30), // Rounded border
                 boxShadow: [
                   BoxShadow(
                     color: const Color.fromARGB(255, 0, 0, 0).withOpacity(0.2), // Shadow color
                     spreadRadius: 2, // Spread radius
                     blurRadius: 2, // Blur radius
-                    offset: Offset(0, 3), // Offset
+                    offset: const Offset(0, 3), // Offset
                   ),
                 ],
               ),
-              child: Text(
+              child: const Text(
                 'Syncing Preferences',
                 style: TextStyle(
                   fontSize: 18,
@@ -61,7 +64,7 @@ class syncingpreferencePage extends StatelessWidget {
                 ),
               ),
             ),
-            SizedBox(height: 40),
+            const SizedBox(height: 40),
             Container(
               decoration: BoxDecoration(
                 color: Colors.white,
@@ -71,20 +74,20 @@ class syncingpreferencePage extends StatelessWidget {
                     color: Colors.grey.withOpacity(0.2), // Shadow color
                     spreadRadius: 2, // Spread radius
                     blurRadius: 10, // Blur radius
-                    offset: Offset(0, 3), // Offset
+                    offset: const Offset(0, 3), // Offset
                   ),
                 ],
               ),
               child: Padding(
-                padding: EdgeInsets.symmetric(horizontal: 16),
+                padding: const EdgeInsets.symmetric(horizontal: 16),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start, // Align children to the left
                   children: [
-                    SizedBox(height: 20),
-                    _buildSyncingItem(title: "Sign In"),
-                    SizedBox(height: 15),
+                    const SizedBox(height: 20),
+                    _buildSyncingItem(title: "Sign in"),
+                    const SizedBox(height: 15),
                     _buildSyncingItem(title: "Create Account"),
-                    SizedBox(height: 20),
+                    const SizedBox(height: 20),
                   ],
                 ),
               ),
@@ -103,14 +106,14 @@ class syncingpreferencePage extends StatelessWidget {
           width: 250,
           height: 40,
           decoration: BoxDecoration(
-            color: Color.fromRGBO(224, 240, 255, 1),
+            color: const Color.fromRGBO(224, 240, 255, 1),
             borderRadius: BorderRadius.circular(30), // Rounded border
             boxShadow: [
               BoxShadow(
-                color: Color.fromARGB(255, 0, 0, 0).withOpacity(0.2), // Shadow color
+                color: const Color.fromARGB(255, 0, 0, 0).withOpacity(0.2), // Shadow color
                 spreadRadius: 3, // Spread radius
                 blurRadius: 3, // Blur radius
-                offset: Offset(0, 3), // Offset
+                offset: const Offset(0, 3), // Offset
               ),
             ],
           ),
@@ -118,7 +121,7 @@ class syncingpreferencePage extends StatelessWidget {
             child: Text(
               title,
               textAlign: TextAlign.center,
-              style: TextStyle(
+              style: const TextStyle(
                 color: Colors.black,
                 fontFamily: 'Inter',
                 fontSize: 16,

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
 import 'homePage.dart';
+import 'authentication.dart';
 
 class loginPage extends StatefulWidget {
   loginPage({Key? key}) : super(key: key);
@@ -11,16 +12,33 @@ class loginPage extends StatefulWidget {
 
 class _LoginPageState extends State<loginPage> {
   final _formKey = GlobalKey<FormBuilderState>();
+  final Authentication _auth = Authentication();
 
-  void _login(BuildContext context) {
+  Future<void> _login(BuildContext context) async {
     _formKey.currentState!.save();
     if (_formKey.currentState!.validate()) {
-      // Pass the email to the homepage
-      final email = _formKey.currentState!.value['username'];
-      Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(builder: (context) => HomePage(email: email)),
-      );
+      try {
+        // Sign in with email and password
+        final email = _formKey.currentState!.value['email'];
+        final password = _formKey.currentState!.value['password'];
+        await _auth.signInWithEmailAndPassword(email: email, password: password);
+
+        // Navigate to the home page on successful login
+        print("Login success!");
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(builder: (context) => HomePage()),
+        );
+      } catch (e) {
+        // Handle errors here
+        print("Login failed: $e");
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text('Login failed. Please check your email and password.'),
+            duration: Duration(seconds: 3),
+          ),
+        );
+      }
     } else {
       print("Validation failed");
     }
@@ -41,18 +59,18 @@ class _LoginPageState extends State<loginPage> {
           child: SingleChildScrollView(
             child: Column(
               children: [
-                Text('LOGIN', style: TextStyle(fontFamily: 'Mplus 1p', fontSize: 40, color: Color.fromARGB(255, 0, 0, 0))),
+                const Text('LOGIN', style: TextStyle(fontFamily: 'Mplus 1p', fontSize: 40, color: Color.fromARGB(255, 0, 0, 0))),
                 Padding(
                   padding: EdgeInsets.all(10),
                   child: FormBuilder(
                     key: _formKey,
-                    initialValue: {'username': '', 'password ': ''},
+                    initialValue: {'email': '', 'password ': ''},
                     child: Column(
                       children: [
                         Container(
                           width: 300, // Set the desired width for the text field
                           child: FormBuilderTextField(
-                            name: 'username',
+                            name: 'email',
                             decoration: InputDecoration(
                               enabledBorder: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(30.0),
@@ -71,7 +89,7 @@ class _LoginPageState extends State<loginPage> {
                                 borderSide: BorderSide.none,
                               ),
                               contentPadding: EdgeInsets.symmetric(horizontal: 20),
-                              labelText: 'PASSWORD',
+                              labelText: 'EMAIL',
                               filled: true,
                               fillColor: Colors.white,
                             ),
@@ -116,9 +134,7 @@ class _LoginPageState extends State<loginPage> {
                             ]),
                           ),
                         ),
-                        SizedBox(
-                          height: 20,
-                        ),
+                        const SizedBox(height: 20),
                         SizedBox(
                           width: 200,
                           child: Container(

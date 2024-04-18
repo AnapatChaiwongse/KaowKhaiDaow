@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "362569442877",
+    "project_id": "kaidaow-wireless",
+    "storage_bucket": "kaidaow-wireless.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:362569442877:android:4cf2bf6e31661589b8ac54",
+        "android_client_info": {
+          "package_name": "com.example.application"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB4d7dB7H4LdtnV25-B6YBue-VE-YzkkuQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,14 +1,31 @@
-import 'dart:ffi';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'navigator.dart';
 
-class NotificationPageOnWidget extends StatelessWidget {
+class NotificationPageOnWidget extends StatefulWidget {
+  @override
+  _NotificationPageOnWidgetState createState() => _NotificationPageOnWidgetState();
+}
+
+class _NotificationPageOnWidgetState extends State<NotificationPageOnWidget> {
   int _currentIndex = 4;
+  bool _themeIndex = false;
   final ValueNotifier<bool> switchNotifier1 = ValueNotifier<bool>(true);
   final ValueNotifier<bool> switchNotifier2 = ValueNotifier<bool>(true);
   final ValueNotifier<bool> switchNotifier3 = ValueNotifier<bool>(true);
+
+  List<List<Color>> getGradients() {
+    return [
+      [const Color.fromARGB(255, 199, 244, 252), const Color.fromARGB(255, 213, 253, 212)],
+      [Color.fromARGB(255, 105, 101, 153), Color.fromARGB(255, 107, 107, 107)],
+    ];
+  }
+
+  void _toggleTheme() {
+    setState(() {
+      _themeIndex = !_themeIndex;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -18,9 +35,9 @@ class NotificationPageOnWidget extends StatelessWidget {
         height: double.infinity,
         decoration: BoxDecoration(
           gradient: LinearGradient(
-            begin: Alignment.topCenter,
-            end: Alignment.bottomCenter,
-            colors: [Color.fromARGB(255, 201, 237, 248)!, Color.fromARGB(255, 255, 254, 213)!, Color.fromRGBO(225, 252, 250, 1)!],
+            begin: Alignment.topRight,
+            end: Alignment.bottomLeft,
+            colors: getGradients()[_themeIndex ? 1 : 0],
           ),
         ),
         child: Stack(
@@ -59,7 +76,7 @@ class NotificationPageOnWidget extends StatelessWidget {
                   ),
                 ],
               ),
-              child: Text(
+              child: const Text(
                 'Notifications',
                 style: TextStyle(
                   fontSize: 18,
@@ -82,18 +99,25 @@ class NotificationPageOnWidget extends StatelessWidget {
                 ],
               ),
               child: Padding(
-                padding: EdgeInsets.symmetric(horizontal: 16), // Add left and right padding
+                padding: EdgeInsets.symmetric(horizontal: 16, vertical: 12), // Adjust padding
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start, // Align children to the left
                   children: [
-                    _buildSelectItem(title: 'Turn on notification', valueNotifier: switchNotifier1),
-                    SizedBox(height: 10),
-                    _buildCustomLine(thickness: 1),
-                    SizedBox(height: 10),
-                    _buildSelectItem(title: 'Activity notification', valueNotifier: switchNotifier2),
-                    SizedBox(height: 10),
-                    _buildSelectItem(title: 'Mute', valueNotifier: switchNotifier3),
-                    SizedBox(height: 200),
+                    _buildNotiItem(title: 'Turn on notification', valueNotifier: switchNotifier1),
+                    Visibility(
+                      visible: !_themeIndex,
+                      child: Column(
+                        children: [
+                          SizedBox(height: 10),
+                          _buildCustomLine(thickness: 1),
+                          SizedBox(height: 10),
+                          _buildSelectItem(title: 'Activity notification', valueNotifier: switchNotifier2),
+                          SizedBox(height: 10),
+                          _buildSelectItem(title: 'Mute', valueNotifier: switchNotifier3),
+                        ],
+                      ),
+                    ),
+                    SizedBox(height: 10), // Reduce height
                   ],
                 ),
               ),
@@ -116,6 +140,44 @@ class NotificationPageOnWidget extends StatelessWidget {
     );
   }
 
+  Widget _buildNotiItem({required String title, required ValueNotifier<bool> valueNotifier}) {
+    return Container(
+      width: 278,
+      height: 51,
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 20),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Text(
+              title,
+              style: const TextStyle(
+                color: Color.fromRGBO(0, 0, 0, 1),
+                fontFamily: 'Inter',
+                fontSize: 16,
+                letterSpacing: 0,
+                fontWeight: FontWeight.normal,
+                height: 1,
+              ),
+            ),
+            ValueListenableBuilder<bool>(
+              valueListenable: valueNotifier,
+              builder: (context, value, child) {
+                return CupertinoSwitch(
+                  value: value,
+                  onChanged: (newValue) {
+                    valueNotifier.value = newValue;
+                    _toggleTheme(); // Toggle theme when switch changes
+                  },
+                );
+              },
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
   Widget _buildSelectItem({required String title, required ValueNotifier<bool> valueNotifier}) {
     return Container(
       width: 278,
@@ -127,7 +189,7 @@ class NotificationPageOnWidget extends StatelessWidget {
           children: [
             Text(
               title,
-              style: TextStyle(
+              style: const TextStyle(
                 color: Color.fromRGBO(0, 0, 0, 1),
                 fontFamily: 'Inter',
                 fontSize: 16,

@@ -48,7 +48,7 @@ class _NavigationWidgetState extends State<NavigationWidget> {
       type: BottomNavigationBarType.fixed,
       selectedItemColor: Colors.black,
       unselectedItemColor: Colors.black.withOpacity(0.6),
-      items: [
+      items: const [
         BottomNavigationBarItem(
           icon: Icon(Icons.mood),
           label: 'Mood',
